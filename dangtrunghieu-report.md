@@ -1,5 +1,5 @@
 # Báo cáo cá nhân — Ngày 11
-Link nộp bài (Google Drive, thư mục chứa 5 file): https://drive.google.com/drive/folders/1Pi6cm3c6C0PHIsUY87-e1d_PtufQxz2T?usp=sharing  
+Link nộp bài (Google Drive, thư mục chứa 3 file): https://drive.google.com/drive/folders/1Pi6cm3c6C0PHIsUY87-e1d_PtufQxz2T?usp=sharing  
 Họ tên: Đặng Trung Hiếu              Mã học viên: 2A202603248  
 Phiên bản CVAT (Help → About): 2.74.1  
 Guideline: Road v1.0    Lần nộp (`revision` trong manifest): 1  

@@ -19,7 +19,7 @@ Số liệu lấy từ `dangtrunghieu-manifest.json` (revision 1).
 
 | Task | Ảnh | lane | road_curb | crosswalk | drivable | traffic_light | traffic_sign |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| front | 12 | 23 | 4 | 3 | 28 | 18 | 4 |
+| front | 12 | 24 | 4 | 3 | 28 | 18 | 4 |
 | front-extra (đã làm 0 / 4) | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | fisheye | 8 | 0 | 0 | 10 | 0 | 0 | 0 |
 | fisheye-extra (đã làm 0 / 4) | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
@@ -73,7 +73,7 @@ Bạn kiểm lô của tôi: ___  Quyết định nhận được: ___ (chưa nh
 
 ## 7. Tự đánh giá
 Lỗi bạn mắc nhiều nhất hôm nay (theo mã QC1-xx), và cách tránh ở Ngày 20:  
-**QC1-01.** Lần `road_check lint` đầu báo cả 8 ảnh fisheye (B01–B08) trong file của tôi có `camera = front`, trong khi tên file cho biết phải là fisheye_front, fisheye_rear, fisheye_left hoặc fisheye_right. Nguyên nhân: CVAT tự điền giá trị đầu danh sách (`front`) và tôi không mở Details để sửa lại ở các ảnh fisheye. Đã sửa cả 8 ảnh; lint lần sau hết báo QC1-01. Lỗi thứ hai là QC1-02: lint báo thiếu L1 hoặc R1 ở A03, A05, A06, A07, A09 và A12, trong đó có ảnh thật sự không có vạch (A05, A06) và ảnh bỏ sót. Cách tránh ở Ngày 20: đặt `camera` trước tiên và đối chiếu hậu tố tên file (FV, RV, MVL, MVR) ngay khi đặt tag; chạy `lint` sau vài ảnh đầu của mỗi task thay vì chờ tới cuối buổi; với mỗi cảnh báo QC1-02, nhìn lại ảnh để phân biệt "ảnh không có vạch" với "tôi bỏ sót".  
+**QC1-01.** Lần `road_check lint` đầu báo cả 8 ảnh fisheye (B01–B08) trong file của tôi có `camera = front`, trong khi tên file cho biết phải là fisheye_front, fisheye_rear, fisheye_left hoặc fisheye_right. Nguyên nhân: CVAT tự điền giá trị đầu danh sách (`front`) và tôi không mở Details để sửa lại ở các ảnh fisheye. Đã sửa cả 8 ảnh; lint lần sau hết báo QC1-01. Lỗi thứ hai là QC1-02: lint báo thiếu L1 hoặc R1 ở A03, A05, A06, A07, A09 và A12 (A03 đã được bổ sung vạch vàng L1 sau đó), trong đó có ảnh thật sự không có vạch (A05, A06) và ảnh bỏ sót. Cách tránh ở Ngày 20: đặt `camera` trước tiên và đối chiếu hậu tố tên file (FV, RV, MVL, MVR) ngay khi đặt tag; chạy `lint` sau vài ảnh đầu của mỗi task thay vì chờ tới cuối buổi; với mỗi cảnh báo QC1-02, nhìn lại ảnh để phân biệt "ảnh không có vạch" với "tôi bỏ sót".  
 Nhãn của bạn đi vào model ở đâu? Chọn một lỗi đã sửa và nói nó làm model học sai thế nào:  
 Lỗi tag camera (đã sửa ở 8 ảnh fisheye). Tag `camera` quyết định ảnh vào nhóm dữ liệu nào. Nếu ảnh fisheye mang tag `front`, chúng bị trộn vào tập ảnh camera thường. Model học làn từ các ảnh này sẽ thấy vạch thẳng ngoài đời bị cong rất mạnh ở vòng ngoài, nên nó học sai hình dạng làn cho camera thường, và đồng thời tập fisheye bị thiếu dữ liệu. Vì vậy tag camera sai là lỗi nặng trong thang QC: nó đưa cả ảnh vào sai nhóm dữ liệu.  
 
